@@ -13,6 +13,14 @@ def test_simple_3():
     assert brackets_cutter_python('(esdfd((2esdf)(esdf)') == '(esdfd((2esdf)(esdf)'
 
 
+def test_simple_4():
+    assert brackets_cutter_python('(asdas)') == '(asdas)'
+
+
+def test_simple_5():
+    assert brackets_cutter_python('))(())') == '))(())'
+
+
 def test_without_brackets():
     assert brackets_cutter_python('asdas') == 'asdas'
 

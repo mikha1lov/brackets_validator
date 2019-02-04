@@ -10,22 +10,10 @@ def brackets_cutter_regex(raw: str) -> str:
 
 
 def brackets_cutter_python(raw: str) -> str:
-    if raw == '':
-        return raw
-
-    is_inside = False
-    checkpoint = 0
-
-    for position, s in enumerate(raw):
-        if s == ')':
-            new_checkpoint = position + 1
-            if is_inside:
-                is_inside = False
-            checkpoint = new_checkpoint
-        elif s == '(':
-            is_inside = True
-
-    if is_inside:
-        raw = raw[:checkpoint]
-
+    last_closed_bracket = raw.rfind(')')
+    start = last_closed_bracket if last_closed_bracket != -1 else 0
+    end = raw.rfind('(', start)
+    if end != -1:
+        return raw[:end]
     return raw
+
